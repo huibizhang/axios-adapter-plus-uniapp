@@ -33,6 +33,21 @@ function uniappAdapter(config = {}) {
     // Send the request
     if (isUploadFile(config)) {
       requestTask = uni.uploadFile(uniConfig)
+
+      if(Object.keys(config).includes('onUploadProgress')) {
+        requestTask.onProgressUpdate((res) => {
+          config.onUploadProgress({
+            loaded: res.totalBytesSent,
+            total: res.totalBytesExpectedToSend,
+            progress: res.progress,
+            bytes: res.totalBytesSent,
+            rate: null,
+            estimated: null,
+            upload: true,
+            event: null
+          })
+        })
+      }
     } else {
       requestTask = uni.request(uniConfig)
     }
