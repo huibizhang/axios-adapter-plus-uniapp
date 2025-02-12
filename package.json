@@ -4,8 +4,7 @@
   "description": "axios adapter for uni-app with progress.",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "prepublishOnly": "np --no-cleanup --yolo --no-publish --any-branch"
+    "test": "jest"
   },
   "keywords": [
     "axios",
